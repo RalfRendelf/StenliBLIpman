@@ -12,13 +12,15 @@ class Sales_data
 	double revenue = 0.0, price = 0;};
 public:
 	void ISBN();
+	
 private: 
-	inline SD book();
+	inline SD read();
 };
 
-inline Sales_data::SD Sales_data::book()
+
+inline Sales_data::SD Sales_data::read()
 {
-	//Sales_data Bk;
+	
 	SD Bk;
 	
 	cout << "Enter book name\n";
@@ -35,7 +37,7 @@ void Sales_data::ISBN()
 	vector<SD> Books;
 	bool C = 1;
 	bool flag = 1, strelka = 1;
-	Books.push_back(book());
+	Books.push_back(read());
 	system("cls");
 	while (C)
 	{
@@ -70,7 +72,7 @@ void Sales_data::ISBN()
 			{system("cls");
 				flag = 1;
 				SD g;
-				g = book();
+				g = read();
 				for (auto& a : Books)
 				{
 					if (a.bookNo == g.bookNo)
@@ -101,3 +103,30 @@ void Sales_data::ISBN()
 
 
 }
+class person {
+private:
+	string name, addres;
+	
+public:
+	person()
+	{
+		name = "Neo\t";
+		addres = "Zion\t";
+	}
+	person(string a,string b)
+	{
+		name = a;
+		addres = b;
+	}
+	void getIn()
+	{
+		cout << "Name - " << name << "\tAddres - " << addres<<"\n";
+	}
+
+	~person()
+	{
+		cout << "destructor";
+	}
+
+
+};

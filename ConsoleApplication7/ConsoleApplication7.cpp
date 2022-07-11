@@ -12,7 +12,9 @@ int main()
     cout << g.longestPalindrome(h);
     */
     Sales_data g;
-    g.ISBN();
+    //g.ISBN();
+    person f("Dan","krest");
+    f.getIn();
     //std::cout << "Hello World!\n";
 }
 
