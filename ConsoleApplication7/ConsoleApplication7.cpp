@@ -2,20 +2,15 @@
 //
 
 #include <iostream>
-#include "Sales_data1.h"
+
+#include "Screen.h"
 
 
 int main()
 {
-    /*string h = "aacabdkacaa";
-    Solution g;
-    cout << g.longestPalindrome(h);
-    */
-    Sales_data g;
-    //g.ISBN();
-    person f("Dan","krest");
-    f.getIn();
-    //std::cout << "Hello World!\n";
+	Screen g;
+	g.fff();
+	 
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
