@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include "Sales_data.h"
+#include "Sales_data1.h"
 
 
 int main()

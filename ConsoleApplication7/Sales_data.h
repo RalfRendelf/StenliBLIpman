@@ -12,7 +12,21 @@ class Sales_data
 	double revenue = 0.0, price = 0;};
 public:
 	void ISBN();
-	
+private:
+	istream& read(istream& is, SD& item)
+	{
+		//double price = 0; 
+		is >> item.units_sold >> item.bookNo >> item.price;
+		return is;
+	}
+	ostream& print(ostream& os, const SD& item)
+	{
+		os << item.units_sold;
+	}
+	SD add(const SD& lhs, const Sales_data& rhs)
+	{
+
+	}
 private: 
 	inline SD read();
 };
@@ -22,7 +36,7 @@ inline Sales_data::SD Sales_data::read()
 {
 	
 	SD Bk;
-	
+	read(cin, Bk);
 	cout << "Enter book name\n";
 	cin >> Bk.bookNo;
 	cout << "Enter the number of copies sold:\n";
@@ -126,6 +140,17 @@ public:
 	~person()
 	{
 		cout << "destructor";
+	}
+private:
+	istream& read(istream& is, string& inf)
+	{
+		is >> inf;
+		return is;
+	}
+	ostream& print(ostream& os, const string& inf)
+	{
+		os << inf;
+		return os;
 	}
 
 
