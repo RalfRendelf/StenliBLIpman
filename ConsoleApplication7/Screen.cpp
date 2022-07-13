@@ -32,3 +32,8 @@ Screen& Screen::set(pos a, pos b, char c)
 	contest[a * width + b] = c;
 	return *this;
 }
+void Window_mgr::clear(ScreenIndex i)
+{
+	Screen& s = screens[i];
+	s.contest = string(s.height * s.width, ' ');
+}
