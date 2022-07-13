@@ -8,9 +8,11 @@
 
 int main()
 {
-	Screen g;
-	g.fff();
-	 
+	Screen myscreen;
+	//char ch = myscreen.get();
+	char ch = myscreen.get(0, 0);
+	myscreen.move(4, 0).set('#');
+	cout << sizeof(Screen);
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

@@ -16,7 +16,7 @@ public :
 	string isbn() const { return bookNo; }
 	Sales_data& combine(const Sales_data&);
 private:
-	double avg_price() const {
+	inline double avg_price() const {
 		return units_sold ? revenue / units_sold : 0;
 	}
 	string bookNo;
