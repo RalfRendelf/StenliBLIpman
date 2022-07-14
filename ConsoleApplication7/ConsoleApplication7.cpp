@@ -3,16 +3,17 @@
 
 #include <iostream>
 
-#include "Screen.h"
+#include "Solution.h"
 
 
 int main()
 {
-	Screen myscreen;
-	//char ch = myscreen.get();
-	char ch = myscreen.get(0, 0);
-	myscreen.move(4, 0).set('#');
-	cout << sizeof(Screen);
+	vector<int> g{ 3,9,20,15,7 }, f{ 9,3,15,20,7 };
+	Solution a;
+	auto az= a.buildTree(g, f);
+	
+	
+	
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

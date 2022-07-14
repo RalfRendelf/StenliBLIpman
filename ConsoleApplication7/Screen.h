@@ -2,6 +2,8 @@
 #include<iostream>
 #include <vector>
 using namespace std;
+//extern ostream& storeOn(ostream&, Screen&);
+//extern BitMap& storeOn(BitMap&);
 class Screen
 {
 public:
@@ -44,7 +46,9 @@ class Window_mgr
 	using ScreenIndex = vector<Screen>::size_type;
 	void clear(ScreenIndex i)
 	{
-		
+		Screen& s = screens[i];
+		s.contest = string(s.height * s.width, ' ');
+
 		
 	}
 private:

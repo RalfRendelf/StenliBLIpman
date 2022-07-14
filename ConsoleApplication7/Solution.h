@@ -1,47 +1,36 @@
 #pragma once
 #include <iostream>
+#include <vector>
 using namespace std;
-class Solution{
 
+ 
+ struct TreeNode {
+     int val;
+     TreeNode *left;
+     TreeNode *right;
+     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ };
+ 
+class Solution {
 public:
-    string longestPalindrome(string s) {
-        string str = "", str2 = "";
-        if (s.empty())
-            return "";
-        if (s.size() == 1)
-            return s;
-        for (auto a = 0; a < s.size(); a++) {
-            for (auto i = 1; a < s.size() - i; ++i)
-            {
-                if (s[s.size() - i] == s[a])
-                {
-if ((s.size() - i - a) <= str2.size() && s.size() * 0.8 <= str2.size())
-   continue;
-   for (int h = a; h <= (s.size() - i); ++h)
-       str.push_back(s[h]);
-   //break;
+    TreeNode* solve(int start_pre, int start_in, int end_in, vector<int>& preorder, vector<int>& inorder)
+    {
 
+        if (start_in > end_in || start_pre > preorder.size() - 1) return NULL;
 
-   for (int g = 0; g < (str.size()) / 2; g++)
-   {
-       if (str[g] != str[str.size() - 1 - g]/* && str.size() != 1*/)
-       {
-           str = "";
-           break;
-       }
-   }
-   if (str2.size() < str.size()) {
-       str2 = str;
-   }
-     if (s.size() == str2.size())
-       return str2;
-   str = "";
-}
-}
-}
-if (str2.empty())
-    return str2 = s[0];
-return str2;
+        TreeNode* root = new TreeNode(preorder[start_pre]);
 
-}
+        int index = 0;
+        for (int i = start_in; i <= end_in; i++)
+            if (root->val == inorder[i]) index = i;
+
+        root->left = solve(start_pre + 1, start_in, index - 1, preorder, inorder);
+        root->right = solve(start_pre + index - start_in + 1, index + 1, end_in, preorder, inorder);
+        return root;
+    }
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        return solve(0, 0, inorder.size() - 1, preorder, inorder);
+    }
 };
