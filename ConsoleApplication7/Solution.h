@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <math.h>
 using namespace std;
 
  
@@ -13,24 +14,46 @@ using namespace std;
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
  
-class Solution {
-public:
-    TreeNode* solve(int start_pre, int start_in, int end_in, vector<int>& preorder, vector<int>& inorder)
-    {
+ class Solution {
+ public:
+     int helper(TreeNode* root);
+     bool helper2(TreeNode* root);
+     bool isBalanced(TreeNode* root) {
+         return helper2(root);
+     }
+ };
+ int Solution::helper(TreeNode* root)
+ {
+     if (root == NULL)
+         return 1;
+     int cnt1 = 0, cnt2 = 0;
+     if (root->left == NULL && root->right == NULL)
+         return 1;
+     if (root->left != NULL) {
+         cnt1 = helper(root->left);
 
-        if (start_in > end_in || start_pre > preorder.size() - 1) return NULL;
+     }
+     if (root->right != NULL) {
+         cnt2 = helper(root->right);
+     }
+     return (cnt1 > cnt2) ? cnt1 + 1 : cnt2 + 1;
 
-        TreeNode* root = new TreeNode(preorder[start_pre]);
 
-        int index = 0;
-        for (int i = start_in; i <= end_in; i++)
-            if (root->val == inorder[i]) index = i;
 
-        root->left = solve(start_pre + 1, start_in, index - 1, preorder, inorder);
-        root->right = solve(start_pre + index - start_in + 1, index + 1, end_in, preorder, inorder);
-        return root;
-    }
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        return solve(0, 0, inorder.size() - 1, preorder, inorder);
-    }
-};
+ }
+ bool Solution::helper2(TreeNode* root)
+ {
+     int cntl = 0, cntr = 0;
+     if (root == NULL || (root->left == NULL && root->right == NULL))
+         return 1;
+
+     cntl = helper(root->left);
+     cntr = helper(root->right);
+     if (/*abs(cntl - cntr) == 1 ||*/ abs(cntl - cntr) == 0)
+         return 1;
+     return 0;
+
+     if (helper2(root->left) && helper2(root->right))
+         return 1;
+     else return 0;
+ }

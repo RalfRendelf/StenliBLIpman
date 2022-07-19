@@ -8,11 +8,13 @@ class Sales_data
 	friend ostream& write(ostream& s, Sales_data& object);
 	friend Sales_data add();
 public :
-	Sales_data() = default;
+	Sales_data():Sales_data("",0,0){};
 	Sales_data(const string &s,unsigned n, double p):
 		bookNo(s), units_sold(n), revenue(p*n){}
-	Sales_data(const string &s):bookNo(s){}
-	Sales_data(istream&);
+	Sales_data(const string &s):Sales_data(s,0,0) {}
+	Sales_data(istream& is) :Sales_data() {
+		read(is, *this);
+	}
 	string isbn() const { return bookNo; }
 	Sales_data& combine(const Sales_data&);
 private:
@@ -40,3 +42,5 @@ ostream& write(ostream& s, Sales_data& object)
 	s << object.bookNo << object.revenue;
 	return s;
 }
+
+

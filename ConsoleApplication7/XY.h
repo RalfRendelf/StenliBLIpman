@@ -5,9 +5,15 @@
 
 class X
 {
-	Y* x;
+	int i;
+	int j;
+public:
+	X(int val) :j(val), i(j){};
 };
 class Y
 {
-	X fgg;
+	int f = 1;
+	X d;
+	
 };
+X f(12);
